@@ -70,7 +70,7 @@ class _LinkedInRefreshIndicatorState extends State<LinkedInRefreshIndicator>
   double _dragOffset = 0.0;
 
   /// True while finger is on screen and pulling
-  bool _isDragging = false;
+  bool isDragging = false;
 
   /// True while refresh future + minimum duration are running
   bool _isRefreshing = false;
@@ -105,7 +105,7 @@ class _LinkedInRefreshIndicatorState extends State<LinkedInRefreshIndicator>
     // ── Finger dragging down ───────────────────────────────────────────────
     if (notification is OverscrollNotification) {
       setState(() {
-        _isDragging = true;
+        isDragging = true;
         _dragOffset = (_dragOffset - notification.overscroll).clamp(
           0.0,
           widget.triggerOffset,
@@ -117,7 +117,7 @@ class _LinkedInRefreshIndicatorState extends State<LinkedInRefreshIndicator>
     // THIS is where we decide: trigger refresh or snap back.
     // Animation only starts HERE — not while dragging.
     if (notification is ScrollEndNotification) {
-      _isDragging = false;
+      isDragging = false;
 
       if (_dragOffset >= widget.triggerOffset) {
         // ✅ Threshold met → start refresh on release
