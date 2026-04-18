@@ -26,13 +26,18 @@ class LiveSessionCard extends StatelessWidget {
         height: 120,
         // Dark gradient thumbnail background (replaces real image)
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(session.thumbnailColorHex),
-              Color(session.thumbnailColorHex).withValues(alpha: 0.6),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+          // gradient: LinearGradient(
+          //   colors: [
+          //     Color(session.thumbnailColorHex),
+          //     Color(session.thumbnailColorHex).withValues(alpha: 0.6),
+          //   ],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
+          image: DecorationImage(
+            image: NetworkImage(
+              "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=870",
+            ),
           ),
         ),
         child: Stack(
