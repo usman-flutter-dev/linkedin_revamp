@@ -1,0 +1,47 @@
+Command Used to Create All Folders and Files;
+$dirs = "lib/app", "lib/core/constants", "lib/core/theme", "lib/models", "lib/viewmodels", "lib/providers", "lib/shared/widgets", "lib/views/home/widgets", "lib/views/notifications/widgets"; $dirs | ForEach-Object { New-Item -ItemType Directory -Force -Path $_ }; $files = "lib/main.dart", "lib/app/app.dart", "lib/core/constants/app_colors.dart", "lib/core/constants/app_text_styles.dart", "lib/core/constants/app_strings.dart", "lib/core/theme/app_theme.dart", "lib/models/story_model.dart", "lib/models/live_session_model.dart", "lib/models/feed_model.dart", "lib/models/notification_model.dart", "lib/viewmodels/home_viewmodel.dart", "lib/viewmodels/notifications_viewmodel.dart", "lib/providers/home_provider.dart", "lib/providers/notifications_provider.dart", "lib/shared/widgets/bottom_nav_bar.dart", "lib/views/home/home_screen.dart", "lib/views/home/widgets/story_circle_widget.dart", "lib/views/home/widgets/filter_chips_widget.dart", "lib/views/home/widgets/live_session_card.dart", "lib/views/home/widgets/feed_card_widget.dart", "lib/views/notifications/notifications_screen.dart", "lib/views/notifications/widgets/notification_item_widget.dart"; $files | ForEach-Object { New-Item -ItemType File -Force -Path $_ }
+
+Architecture
+lib/
+├── main.dart
+├── app/
+│   └── app.dart
+│
+├── core/
+│   ├── constants/
+│   │   ├── app_colors.dart         ← All hex colors from the mockup
+│   │   ├── app_text_styles.dart    ← Every TextStyle used in the UI
+│   │   └── app_strings.dart        ← All hardcoded strings (l18n-ready)
+│   └── theme/
+│       └── app_theme.dart          ← MaterialApp ThemeData config
+│
+├── models/                         ← Pure data classes (no logic)
+│   ├── story_model.dart
+│   ├── live_session_model.dart
+│   ├── feed_model.dart
+│   └── notification_model.dart
+│
+├── viewmodels/                     ← Business logic (MVVM "VM" layer)
+│   ├── home_viewmodel.dart
+│   └── notifications_viewmodel.dart
+│
+├── providers/                      ← Riverpod Provider declarations
+│   ├── home_provider.dart
+│   └── notifications_provider.dart
+│
+├── shared/
+│   └── widgets/
+│       └── bottom_nav_bar.dart     ← Shared across both screens
+│
+└── views/
+    ├── home/
+    │   ├── home_screen.dart        ← Main Home screen (Consumer widget)
+    │   └── widgets/
+    │       ├── story_circle_widget.dart
+    │       ├── filter_chips_widget.dart
+    │       ├── live_session_card.dart
+    │       └── feed_card_widget.dart
+    └── notifications/
+        ├── notifications_screen.dart
+        └── widgets/
+            └── notification_item_widget.dart
